@@ -5,5 +5,7 @@ package ru.javawebinar.webapp.model;
  * 09.07.16.
  */
 public class Resume {
-    String fullName;
+    private String fullName;
+    private String location;
+
 }
