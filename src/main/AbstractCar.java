@@ -20,8 +20,4 @@ public abstract class AbstractCar implements Car {
                     + ", Eng vol: " + getEngineVolume() + " )");
     }
 
-//    public double getEngineVolume()
-//    {
-//
-//    }
 }
