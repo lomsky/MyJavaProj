@@ -5,18 +5,23 @@ package ru.javawebinar.webapp.model;
  * 09.07.16.
  */
 public class Link {
+    public static Link EMPTY = new Link();
     private final String name;
     private final String url;
+
+    public Link() {
+        this("", null);
+    }
+
+    public Link(Link link) {
+        this(link.name,link.url);
+    }
 
     public Link(String name, String url) {
         this.name = name;
         this.url = url;
     }
 
-    public Link(Link link) {
-        this.name = link.name;
-        this.url = link.url;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -35,5 +40,13 @@ public class Link {
         int result = name.hashCode();
         result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Link{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
