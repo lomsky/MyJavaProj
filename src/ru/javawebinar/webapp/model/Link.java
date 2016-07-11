@@ -22,6 +22,13 @@ public class Link {
         this.url = url;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 
     @Override
     public boolean equals(Object o) {
