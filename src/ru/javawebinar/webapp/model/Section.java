@@ -5,6 +5,6 @@ package ru.javawebinar.webapp.model;
  * 10.07.16.
  */
 public class Section {
-    String type;
+   protected SectionType type;
 
 }
