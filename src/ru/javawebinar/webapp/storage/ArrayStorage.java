@@ -45,4 +45,5 @@ public class ArrayStorage implements IStorage {
     public Collection<Resume> getAllSorted() {
         return null;
     }
+
 }
