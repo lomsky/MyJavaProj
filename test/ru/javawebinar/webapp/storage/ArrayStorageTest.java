@@ -49,7 +49,8 @@ public class ArrayStorageTest {
 
     @org.junit.Test
     public void clear() throws Exception {
-
+        storage.clear();
+        assertEquals(0, storage.size());
     }
 
     @org.junit.Test

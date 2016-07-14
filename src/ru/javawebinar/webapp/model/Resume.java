@@ -2,6 +2,7 @@ package ru.javawebinar.webapp.model;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -35,21 +36,21 @@ public class Resume {
         contacts.add(contact);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Resume resume = (Resume) o;
-
-        return uuid.equals(resume.uuid);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return uuid.hashCode();
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        Resume resume = (Resume) o;
+//
+//        return uuid.equals(resume.uuid);
+//
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return uuid.hashCode();
+//    }
 
     public String getUuid() {
         return uuid;
@@ -73,5 +74,23 @@ public class Resume {
 
     public List<Section> getSections() {
         return sections;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Resume resume = (Resume) o;
+        return Objects.equals(uuid, resume.uuid) &&
+                Objects.equals(fullName, resume.fullName) &&
+                Objects.equals(location, resume.location) &&
+                Objects.equals(homepage, resume.homepage) &&
+                Objects.equals(contacts, resume.contacts) &&
+                Objects.equals(sections, resume.sections);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uuid, fullName, location, homepage, contacts, sections);
     }
 }
