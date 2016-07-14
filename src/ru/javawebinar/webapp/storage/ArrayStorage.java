@@ -62,22 +62,36 @@ public class ArrayStorage implements IStorage {
 
     @Override
     public void delete(String uuid) {
+        LOGGER.info("Delete resume with uuid " +uuid);
+        int idx = getIndex(uuid);
+        if (idx == -1) throw new WebAppException("Resume " + uuid + " not exist!");
+
+        int numMoved = size - idx - 1;
+        if (numMoved > 0)
+            System.arraycopy(array, idx + 1, array, idx,
+                    numMoved);
+        array[--size] = null; // clear to let GC do its work
 
     }
 
     @Override
     public Resume load(String uuid) {
-        return null;
+        LOGGER.info("Load resume with uuid " +uuid);
+        int idx = getIndex(uuid);
+        if (idx == -1) throw new WebAppException("Resume " + uuid + " not exist!");
+
+        return array[idx];
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public Collection<Resume> getAllSorted() {
-        return null;
+        Arrays.sort(array,0, size);
+        return Arrays.asList(Arrays.copyOf(array, size));
     }
     // на вход уид (из резюме, которое пытаюсь сохранить). если такое резюме есть - возвращается его индекс
     private int getIndex(String uuid) {
